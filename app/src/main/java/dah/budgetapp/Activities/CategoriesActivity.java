@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,6 +33,12 @@ public class CategoriesActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         ActionBar bar = getSupportActionBar();
+        
+        if (bar != null)
+        {
+            bar.setDisplayHomeAsUpEnabled(true);
+            bar.setTitle(R.string.categories_title);
+        }
 
 
         this.categoriesHolder = (ListView) findViewById(R.id.list_categories_holder);
@@ -42,12 +50,22 @@ public class CategoriesActivity extends AppCompatActivity
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.menu, menu);
+
+        return true;
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId())
         {
             case R.id.action_add_category_button:
-                finish();
                 break;
         }
 
