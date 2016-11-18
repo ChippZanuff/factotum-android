@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Budget App</string>
+    <string name="create_new_category">Create new category</string>
+    <string name="categories_title">Categories</string>
+</resources>
