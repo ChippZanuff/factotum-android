@@ -5,4 +5,8 @@
     <string name="categories_list_screen">Categories list screen</string>
     <string name="statistics_screen">Statistics screen</string>
     <string name="new_expense_screen">New expense screen</string>
+    <string name="statistics_title">Statistics</string>
+    <string name="delete_popup_menu">Delete</string>
+    <string name="edit_popup_menu">Edit</string>
+    <string name="menu_popup">Menu</string>
 </resources>

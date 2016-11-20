@@ -49,14 +49,16 @@ public class MainActivity extends AppCompatActivity
 
     public void onClick(View view)
     {
+        Intent intent;
         switch (view.getId())
         {
             case R.id.goto_categories:
-                Intent intent = new Intent(this, CategoriesActivity.class);
+                intent = new Intent(this, CategoriesActivity.class);
                 startActivity(intent);
                 break;
             case R.id.goto_statistics:
-                System.out.println("b");
+                intent = new Intent(this, StatisticsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.goto_new_expense:
                 System.out.println("c");
