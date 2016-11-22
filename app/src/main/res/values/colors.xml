@@ -3,9 +3,19 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="buttonsLl">#b2b200</color>
+
     <color name="chartTextColor">#000000</color>
     <color name="centreColor">#f2f2f2</color>
     <color name="chartBackgroundColor">#8c8c8c</color>
     <color name="textColor">#404040</color>
+
+    <color name="neutralCalcItemStart">#00b200</color>
+    <color name="neutralCalcItemCentre">#00cc00</color>
+    <color name="neutralCalcItemEnd">#00e500</color>
+
+    <color name="pressedCalcItemStart">#990000</color>
+    <color name="pressedCalcItemCentre">#cc0000</color>
+    <color name="pressedCalcItemEnd">#e50000</color>
 </resources>

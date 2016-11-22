@@ -9,4 +9,7 @@
     <string name="delete_popup_menu">Delete</string>
     <string name="edit_popup_menu">Edit</string>
     <string name="menu_popup">Menu</string>
+    <string name="spinner_category_tag">Select category here</string>
+    <string name="spinner_type_tag">Select type here</string>
+    <string name="add_new_expense">Add new expense</string>
 </resources>
