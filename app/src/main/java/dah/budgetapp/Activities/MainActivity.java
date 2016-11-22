@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity
     {
         ArrayList<Category> categories = new ArrayList<>();
         List<ChartData> data = new ArrayList<>();
+        categories.add(new Category("first", 400));
+        categories.add(new Category("second", 300));
+        categories.add(new Category("third", 100));
+        categories.add(new Category("fourth", 200));
+        categories.add(new Category("fifth", 50));
 
         for(int i = 0; i < categories.size(); i++)
         {
@@ -61,7 +66,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
             case R.id.goto_new_expense:
-                System.out.println("c");
+                intent = new Intent(this, CreateExpensesActivity.class);
+                startActivity(intent);
                 break;
         }
     }

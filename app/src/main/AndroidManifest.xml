@@ -20,6 +20,9 @@
         <activity android:name=".Activities.CategoriesActivity"/>
 
         <activity android:name=".Activities.StatisticsActivity"/>
+
+        <activity android:name=".Activities.CreateExpensesActivity"/>
+
     </application>
 
 </manifest>
