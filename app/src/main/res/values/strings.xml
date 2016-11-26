@@ -12,4 +12,6 @@
     <string name="spinner_category_tag">Select category here</string>
     <string name="spinner_type_tag">Select type here</string>
     <string name="add_new_expense">Add new expense</string>
+    <string name="title_types">Types</string>
+    <string name="create_new_type">Create New Type</string>
 </resources>
