@@ -23,6 +23,8 @@
 
         <activity android:name=".Activities.CreateExpensesActivity"/>
 
+        <activity android:name=".Activities.TypesActivity"/>
+
     </application>
 
 </manifest>
