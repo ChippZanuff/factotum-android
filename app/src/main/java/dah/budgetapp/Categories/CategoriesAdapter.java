@@ -1,10 +1,13 @@
 package dah.budgetapp.Categories;
 
 import android.content.Context;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import dah.budgetapp.R;
@@ -13,9 +16,11 @@ public class CategoriesAdapter extends BaseAdapter
 {
     private ArrayList<Category> categories;
     private LayoutInflater inflater;
+    private Context context;
 
     public CategoriesAdapter(Context context, ArrayList<Category> categories)
     {
+        this.context = context;
         this.categories = categories;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -51,7 +56,37 @@ public class CategoriesAdapter extends BaseAdapter
         Category category = (Category) this.getItem(i);
 
         ((TextView) view.findViewById(R.id.view_category_name)).setText(category.getName());
-        ((TextView) view.findViewById(R.id.view_category_money_sum)).setText(Integer.toString(category.getSum()));
+
+        ImageButton menu = (ImageButton) view.findViewById(R.id.popup_menu);
+
+        menu.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                PopupMenu popupMenu = new PopupMenu(context, view);
+                popupMenu.getMenuInflater().inflate(R.menu.item_settings_menu, popupMenu.getMenu());
+                popupMenu.show();
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
+                {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item)
+                    {
+                        switch (item.getItemId())
+                        {
+                            case R.id.edit:
+
+                                break;
+                            case R.id.delete:
+
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
+            }
+        });
 
         return view;
     }

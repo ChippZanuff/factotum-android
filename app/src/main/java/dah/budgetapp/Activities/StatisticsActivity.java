@@ -39,11 +39,11 @@ public class StatisticsActivity extends AppCompatActivity
             this.bar.setTitle(R.string.title_statistics);
         }
 
-        this.categories.add(new Category("first", 400));
-        this.categories.add(new Category("second", 300));
-        this.categories.add(new Category("third", 100));
-        this.categories.add(new Category("fourth", 200));
-        this.categories.add(new Category("fifth", 50));
+        this.categories.add(new Category("first"));
+        this.categories.add(new Category("second"));
+        this.categories.add(new Category("third"));
+        this.categories.add(new Category("fourth"));
+        this.categories.add(new Category("fifth"));
 
         this.adapter = new StatisticsAdapter(this, R.layout.holder_view_statistics, this.categories);
 

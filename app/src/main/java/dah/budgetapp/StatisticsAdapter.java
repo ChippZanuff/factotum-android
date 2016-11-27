@@ -59,7 +59,7 @@ public class StatisticsAdapter extends BaseAdapter
         Category category = this.categories.get(i);
 
         ((TextView) view.findViewById(R.id.name_statistics)).setText(category.getName());
-        ((TextView) view.findViewById(R.id.sum_statistics)).setText(Integer.toString(category.getSum()));
+        ((TextView) view.findViewById(R.id.sum_statistics)).setText(Integer.toString(10));
 
         ImageButton menu = (ImageButton) view.findViewById(R.id.popup_menu);
 
