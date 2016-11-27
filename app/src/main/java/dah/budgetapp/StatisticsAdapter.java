@@ -1,13 +1,10 @@
 package dah.budgetapp;
 
 import android.content.Context;
-import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -60,38 +57,6 @@ public class StatisticsAdapter extends BaseAdapter
 
         ((TextView) view.findViewById(R.id.name_statistics)).setText(category.getName());
         ((TextView) view.findViewById(R.id.sum_statistics)).setText(Integer.toString(10));
-
-        ImageButton menu = (ImageButton) view.findViewById(R.id.popup_menu);
-
-        menu.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                PopupMenu popupMenu = new PopupMenu(context, view);
-                popupMenu.getMenuInflater().inflate(R.menu.item_settings_menu, popupMenu.getMenu());
-                popupMenu.show();
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
-                {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item)
-                    {
-                        switch (item.getItemId())
-                        {
-                            case R.id.edit:
-
-                                break;
-                            case R.id.delete:
-
-                                break;
-                        }
-
-                        return true;
-                    }
-                });
-            }
-        });
-
         return view;
     }
 }
