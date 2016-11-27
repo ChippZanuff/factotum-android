@@ -26,7 +26,7 @@ public class StatisticsActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.statistics_activity);
+        setContentView(R.layout.activity_statistics);
 
         this.toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(this.toolbar);
@@ -36,7 +36,7 @@ public class StatisticsActivity extends AppCompatActivity
         if(this.bar != null)
         {
             this.bar.setDisplayHomeAsUpEnabled(true);
-            this.bar.setTitle(R.string.statistics_title);
+            this.bar.setTitle(R.string.title_statistics);
         }
 
         this.categories.add(new Category("first", 400));
@@ -45,9 +45,9 @@ public class StatisticsActivity extends AppCompatActivity
         this.categories.add(new Category("fourth", 200));
         this.categories.add(new Category("fifth", 50));
 
-        this.adapter = new StatisticsAdapter(this, R.layout.statistics_holder_view, this.categories);
+        this.adapter = new StatisticsAdapter(this, R.layout.holder_view_statistics, this.categories);
 
-        this.categoriesHolder = (ListView) findViewById(R.id.listview_statistics);
+        this.categoriesHolder = (ListView) findViewById(R.id.list_statistics);
 
         this.categoriesHolder.setAdapter(this.adapter);
     }

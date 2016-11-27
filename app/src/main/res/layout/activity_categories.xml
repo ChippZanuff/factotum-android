@@ -14,13 +14,21 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        tools:targetApi="lollipop"/>
+        tools:targetApi="lollipop"
+        />
+
+    <Button
+        android:id="@+id/create_new_category"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:text="@string/create_new_category"
+        />
 
     <ListView
+        android:id="@+id/list_categories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview_statistics">
-
-    </ListView>
+        />
 
 </LinearLayout>

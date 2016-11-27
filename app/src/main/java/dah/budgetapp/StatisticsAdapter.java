@@ -69,7 +69,7 @@ public class StatisticsAdapter extends BaseAdapter
             public void onClick(View view)
             {
                 PopupMenu popupMenu = new PopupMenu(context, view);
-                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.item_settings_menu, popupMenu.getMenu());
                 popupMenu.show();
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
                 {

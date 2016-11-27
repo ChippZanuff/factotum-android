@@ -45,7 +45,7 @@ public class CategoriesAdapter extends BaseAdapter
 
         if(view == null)
         {
-            view  = inflater.inflate(R.layout.categories_holder_view, viewGroup, false);
+            view  = inflater.inflate(R.layout.holder_view_categories, viewGroup, false);
         }
 
         Category category = (Category) this.getItem(i);

@@ -20,31 +20,32 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         scatter:aboutChart="Categories"
-        scatter:aboutTextColor="@color/chartTextColor"
-        scatter:centerColor="@color/centreColor"
+        scatter:aboutTextColor="@android:color/black"
+        scatter:centerColor="@android:color/white"
         scatter:chartColor="@color/chartBackgroundColor"
         scatter:equalPartition="false"
-        scatter:textColor="@color/textColor"
+        scatter:textColor="@color/chartTextColor"
         />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/button_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:background="@color/buttonsLl"
         android:layout_gravity="bottom|center"
-        android:id="@+id/button_holder">
+        android:orientation="horizontal"
+        android:background="@color/mainActivityBottomButtonsBg">
 
         <ImageButton
+            android:id="@+id/goto_categories"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/ic_list_black_36dp"
             android:onClick="onClick"
-            android:id="@+id/goto_categories"
-            android:contentDescription="@string/categories_list_screen"/>
+            android:contentDescription="@string/description_categories_list_screen"
+            />
 
         <View
             android:layout_width="2dp"
@@ -53,14 +54,15 @@
             />
 
         <ImageButton
+            android:id="@+id/goto_statistics"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/ic_show_chart_black_36dp"
             android:onClick="onClick"
-            android:id="@+id/goto_statistics"
-            android:contentDescription="@string/statistics_screen"/>
+            android:contentDescription="@string/description_statistics_screen"
+            />
 
         <View
             android:layout_width="2dp"
@@ -69,14 +71,15 @@
             />
 
         <ImageButton
+            android:id="@+id/goto_new_expense"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/ic_add_circle_outline_black_36dp"
             android:onClick="onClick"
-            android:id="@+id/goto_new_expense"
-            android:contentDescription="@string/new_expense_screen"/>
+            android:contentDescription="@string/description_new_expense_screen"
+            />
 
     </LinearLayout>
 

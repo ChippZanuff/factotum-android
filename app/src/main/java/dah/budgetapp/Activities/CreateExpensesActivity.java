@@ -34,17 +34,17 @@ public class CreateExpensesActivity extends AppCompatActivity
         if(this.bar != null)
         {
             this.bar.setDisplayHomeAsUpEnabled(true);
-            this.bar.setTitle(R.string.statistics_title);
+            this.bar.setTitle(R.string.title_statistics);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.expenses_grid_item, R.id.calc_item, values);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.calc_item, R.id.calc_item, values);
         gridNumbers.setAdapter(adapter);
     }
 
     private void viewFinder()
     {
-        this.typedNumbers = (TextView) findViewById(R.id.expenses_typed_numbers);
-        this.gridNumbers = (GridView) findViewById(R.id.expenses_calc_grid);
+        this.typedNumbers = (TextView) findViewById(R.id.expenses_edit_text);
+        this.gridNumbers = (GridView) findViewById(R.id.expenses_calc_button_field);
         this.toolbar = (Toolbar) findViewById(R.id.my_toolbar);
     }
 }

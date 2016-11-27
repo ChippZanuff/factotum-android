@@ -52,7 +52,7 @@ public class TypesAdapter extends BaseAdapter
 
         if(view == null)
         {
-            view  = inflater.inflate(R.layout.types_holder_view, viewGroup, false);
+            view  = inflater.inflate(R.layout.holder_view_types, viewGroup, false);
         }
 
         Type type = (Type) this.getItem(i);
@@ -67,7 +67,7 @@ public class TypesAdapter extends BaseAdapter
             public void onClick(View view)
             {
                 PopupMenu popupMenu = new PopupMenu(context, view);
-                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.item_settings_menu, popupMenu.getMenu());
                 popupMenu.show();
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
                 {

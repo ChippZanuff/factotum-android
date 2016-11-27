@@ -30,7 +30,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.categories_activity);
+        setContentView(R.layout.activity_categories);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -40,11 +40,11 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
         if (bar != null)
         {
             bar.setDisplayHomeAsUpEnabled(true);
-            bar.setTitle(R.string.categories_title);
+            bar.setTitle(R.string.title_categories);
         }
 
 
-        this.categoriesHolder = (ListView) findViewById(R.id.list_categories_holder);
+        this.categoriesHolder = (ListView) findViewById(R.id.list_categories);
         this.createNewCategory = (Button) findViewById(R.id.create_new_category);
 
         this.adapter = new CategoriesAdapter(this, this.getCategories());
@@ -58,7 +58,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     {
         MenuInflater inflater = getMenuInflater();
 
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.action_bar_menu, menu);
 
         return true;
 
