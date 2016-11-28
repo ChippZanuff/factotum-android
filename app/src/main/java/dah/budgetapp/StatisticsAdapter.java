@@ -59,7 +59,7 @@ public class StatisticsAdapter extends BaseAdapter
         Category category = this.categories.get(i);
 
         ((TextView) view.findViewById(R.id.name_statistics)).setText(category.getName());
-        ((TextView) view.findViewById(R.id.sum_statistics)).setText(Integer.toString(category.getSum()));
+        ((TextView) view.findViewById(R.id.sum_statistics)).setText(Integer.toString(10));
 
         ImageButton menu = (ImageButton) view.findViewById(R.id.popup_menu);
 
@@ -69,7 +69,7 @@ public class StatisticsAdapter extends BaseAdapter
             public void onClick(View view)
             {
                 PopupMenu popupMenu = new PopupMenu(context, view);
-                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.item_settings_menu, popupMenu.getMenu());
                 popupMenu.show();
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
                 {

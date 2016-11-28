@@ -57,7 +57,7 @@ public class TypesActivity extends AppCompatActivity
     {
         MenuInflater inflater = getMenuInflater();
 
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.action_bar_menu, menu);
 
         return true;
 

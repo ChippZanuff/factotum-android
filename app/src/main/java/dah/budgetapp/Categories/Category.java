@@ -3,12 +3,10 @@ package dah.budgetapp.Categories;
 public class Category
 {
     private String name;
-    private int sum;
 
-    public Category(String name, int sum)
+    public Category(String name)
     {
         this.name = name;
-        this.sum = sum;
     }
 
     public String getName()
@@ -19,15 +17,5 @@ public class Category
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public int getSum()
-    {
-        return sum;
-    }
-
-    public void setSum(int sum)
-    {
-        this.sum = sum;
     }
 }

@@ -11,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,15 +21,14 @@ import dah.budgetapp.R;
 
 public class CategoriesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
-    private Button createNewCategory;
-    private ListView categoriesHolder;
+    private ListView list;
     private CategoriesAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.categories_activity);
+        setContentView(R.layout.activity_categories);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -40,17 +38,15 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
         if (bar != null)
         {
             bar.setDisplayHomeAsUpEnabled(true);
-            bar.setTitle(R.string.categories_title);
+            bar.setTitle(R.string.title_categories);
         }
 
-
-        this.categoriesHolder = (ListView) findViewById(R.id.list_categories_holder);
-        this.createNewCategory = (Button) findViewById(R.id.create_new_category);
+        this.list = (ListView) findViewById(R.id.list_categories);
 
         this.adapter = new CategoriesAdapter(this, this.getCategories());
 
-        this.categoriesHolder.setAdapter(this.adapter);
-        categoriesHolder.setOnItemClickListener(this);
+        this.list.setAdapter(this.adapter);
+        list.setOnItemClickListener(this);
     }
 
     @Override
@@ -58,7 +54,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     {
         MenuInflater inflater = getMenuInflater();
 
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.action_bar_menu, menu);
 
         return true;
 
@@ -91,11 +87,11 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     public ArrayList<Category> getCategories()
     {
         ArrayList<Category> categories = new ArrayList<>();
-        categories.add(new Category("first", 200));
-        categories.add(new Category("second", 300));
-        categories.add(new Category("third", 150));
-        categories.add(new Category("fourth", 400));
-        categories.add(new Category("fifth", 230));
+        categories.add(new Category("first"));
+        categories.add(new Category("second"));
+        categories.add(new Category("third"));
+        categories.add(new Category("fourth"));
+        categories.add(new Category("fifth"));
 
         return categories;
     }

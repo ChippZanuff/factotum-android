@@ -1,17 +1,22 @@
 <resources>
     <string name="app_name">Budget App</string>
+
     <string name="create_new_category">Create new category</string>
-    <string name="categories_title">Categories</string>
-    <string name="categories_list_screen">Categories list screen</string>
-    <string name="statistics_screen">Statistics screen</string>
-    <string name="new_expense_screen">New expense screen</string>
-    <string name="statistics_title">Statistics</string>
-    <string name="delete_popup_menu">Delete</string>
-    <string name="edit_popup_menu">Edit</string>
-    <string name="menu_popup">Menu</string>
+    <string name="create_new_type">Create New Type</string>
+    <string name="add_new_expense">Add new expense</string>
+
+    <string name="description_categories_list_screen">Categories list screen</string>
+    <string name="description_statistics_screen">Statistics screen</string>
+    <string name="description_new_expense_screen">New expense screen</string>
+    <string name="description_menu_popup">Menu</string>
+
+    <string name="title_statistics">Statistics</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_types">Types</string>
+
+    <string name="popup_menu_item_delete">Delete</string>
+    <string name="popup_menu_item_edit">Edit</string>
+
     <string name="spinner_category_tag">Select category here</string>
     <string name="spinner_type_tag">Select type here</string>
-    <string name="add_new_expense">Add new expense</string>
-    <string name="title_types">Types</string>
-    <string name="create_new_type">Create New Type</string>
 </resources>
