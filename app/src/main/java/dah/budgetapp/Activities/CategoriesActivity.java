@@ -50,7 +50,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
 
         list.setAdapter(this.adapter);
 
-        CategoryRepository repository = new CategoryRepository(ServiceGenerator.createService(CategoryClient.class), this.refresher);
+        CategoryRepository repository = new CategoryRepository(ServiceGenerator.createService(CategoryClient.class));
 
         this.categories = repository.findAll();
 

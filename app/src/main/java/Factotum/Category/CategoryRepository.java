@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import Factotum.Data;
 import Factotum.JsonResponse;
-import dah.budgetapp.UiRefresh;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,13 +12,10 @@ import retrofit2.Response;
 public class CategoryRepository
 {
     private final CategoryClient client;
-    private UiRefresh refresher;
-    private final int REFRESH_LIST = 0;
 
-    public CategoryRepository(CategoryClient client, UiRefresh refresher)
+    public CategoryRepository(CategoryClient client)
     {
         this.client = client;
-        this.refresher = refresher;
     }
 
     public Category create(Category category)
@@ -69,8 +65,6 @@ public class CategoryRepository
                     {
                         categories.add((Category) data.getAttributes());
                     }
-                    refresher.setList(categories);
-                    refresher.sendHandlerMessage(REFRESH_LIST);
                 }
             }
 
