@@ -14,21 +14,45 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import Factotum.Category.Category;
+import Factotum.Category.CategoryClient;
+import Factotum.Category.CategoryRepository;
+import Factotum.Data;
+import Factotum.ServiceGenerator;
 import dah.budgetapp.Categories.CategoriesAdapter;
-import dah.budgetapp.Categories.Category;
+import dah.budgetapp.Dialogs.WaitDialog;
 import dah.budgetapp.R;
+import dah.budgetapp.UiRefresh;
 
 public class CategoriesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
     private ListView list;
     private CategoriesAdapter adapter;
+    private WaitDialog waitDialog;
+    private ArrayList<Category> categories;
+    private UiRefresh refresher;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+
+        this.list = (ListView) findViewById(R.id.list_categories);
+
+        this.waitDialog = new WaitDialog(this);
+        this.categories = new ArrayList<>();
+
+        this.adapter = new CategoriesAdapter(this, categories);
+        this.refresher = new UiRefresh(adapter, this.waitDialog);
+
+        list.setAdapter(this.adapter);
+
+        CategoryRepository repository = new CategoryRepository(ServiceGenerator.createService(CategoryClient.class), this.refresher);
+
+        this.categories = repository.findAll();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -41,12 +65,13 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
             bar.setTitle(R.string.title_categories);
         }
 
-        this.list = (ListView) findViewById(R.id.list_categories);
-
-        this.adapter = new CategoriesAdapter(this, this.getCategories());
-
-        this.list.setAdapter(this.adapter);
         list.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
     }
 
     @Override
@@ -84,14 +109,13 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    public ArrayList<Category> getCategories()
+    public ArrayList<Category> getCategories(List<Data> categories1)
     {
         ArrayList<Category> categories = new ArrayList<>();
-        categories.add(new Category("first"));
-        categories.add(new Category("second"));
-        categories.add(new Category("third"));
-        categories.add(new Category("fourth"));
-        categories.add(new Category("fifth"));
+        for (Data data : categories1)
+        {
+            categories.add((Category) data.getAttributes());
+        }
 
         return categories;
     }

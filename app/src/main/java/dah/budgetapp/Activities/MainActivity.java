@@ -12,7 +12,7 @@ import com.intrusoft.scatter.PieChart;
 import java.util.ArrayList;
 import java.util.List;
 
-import dah.budgetapp.Categories.Category;
+import Factotum.Category.Category;
 import dah.budgetapp.R;
 
 public class MainActivity extends AppCompatActivity
@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity
     {
         ArrayList<Category> categories = new ArrayList<>();
         List<ChartData> data = new ArrayList<>();
-        categories.add(new Category("first"));
-        categories.add(new Category("second"));
-        categories.add(new Category("third"));
-        categories.add(new Category("fourth"));
-        categories.add(new Category("fifth"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
 
         for(int i = 0; i < categories.size(); i++)
         {
