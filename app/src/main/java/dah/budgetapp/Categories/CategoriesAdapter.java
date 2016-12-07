@@ -13,10 +13,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import Factotum.Category.Category;
-import Factotum.ValueUpdate;
+import Factotum.AdapterUpdater;
 import dah.budgetapp.R;
 
-public class CategoriesAdapter extends BaseAdapter implements ValueUpdate
+public class CategoriesAdapter extends BaseAdapter implements AdapterUpdater
 {
     private ArrayList<Category> categories;
     private LayoutInflater inflater;
@@ -92,7 +92,7 @@ public class CategoriesAdapter extends BaseAdapter implements ValueUpdate
     }
 
     @Override
-    public void updateValue(ArrayList list)
+    public void refresh(ArrayList list)
     {
         this.categories.clear();
         this.categories.addAll(list);
