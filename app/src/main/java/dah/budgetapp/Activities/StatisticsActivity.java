@@ -10,7 +10,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import dah.budgetapp.Categories.Category;
+import Factotum.Category.Category;
 import dah.budgetapp.R;
 import dah.budgetapp.StatisticsAdapter;
 
@@ -39,11 +39,11 @@ public class StatisticsActivity extends AppCompatActivity
             this.bar.setTitle(R.string.title_statistics);
         }
 
-        this.categories.add(new Category("first"));
-        this.categories.add(new Category("second"));
-        this.categories.add(new Category("third"));
-        this.categories.add(new Category("fourth"));
-        this.categories.add(new Category("fifth"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
+        categories.add(new Category().setName("first"));
 
         this.adapter = new StatisticsAdapter(this, R.layout.holder_view_statistics, this.categories);
 

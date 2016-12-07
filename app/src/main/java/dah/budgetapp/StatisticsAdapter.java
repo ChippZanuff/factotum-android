@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import dah.budgetapp.Categories.Category;
+import Factotum.Category.Category;
 
 public class StatisticsAdapter extends BaseAdapter
 {

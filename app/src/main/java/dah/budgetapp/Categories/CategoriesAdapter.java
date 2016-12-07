@@ -9,10 +9,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import java.util.ArrayList;
+
+import Factotum.Category.Category;
+import Factotum.ValueUpdate;
 import dah.budgetapp.R;
 
-public class CategoriesAdapter extends BaseAdapter
+public class CategoriesAdapter extends BaseAdapter implements ValueUpdate
 {
     private ArrayList<Category> categories;
     private LayoutInflater inflater;
@@ -75,19 +79,23 @@ public class CategoriesAdapter extends BaseAdapter
                         switch (item.getItemId())
                         {
                             case R.id.edit:
-
                                 break;
                             case R.id.delete:
-
                                 break;
                         }
-
                         return true;
                     }
                 });
             }
         });
-
         return view;
+    }
+
+    @Override
+    public void updateValue(ArrayList list)
+    {
+        this.categories.clear();
+        this.categories.addAll(list);
+        this.notifyDataSetChanged();
     }
 }

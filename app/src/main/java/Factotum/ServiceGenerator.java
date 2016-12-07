@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator
 {
-    public static final String API_URL = "http://your.api-base.url";
+    public static final String API_URL = "http://api.factotum.app/";
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
