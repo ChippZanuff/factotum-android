@@ -1,21 +1,17 @@
 package Factotum;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Pagination
 {
     private int total;
     private int count;
-    private int per_page;
-    private int current_page;
-    private int total_pages;
-
-    public Pagination(int total, int count, int per_page, int current_page, int total_pages)
-    {
-        this.total = total;
-        this.count = count;
-        this.per_page = per_page;
-        this.current_page = current_page;
-        this.total_pages = total_pages;
-    }
+    @SerializedName("per_page")
+    private int perPage;
+    @SerializedName("current_page")
+    private int currentPage;
+    @SerializedName("total_pages")
+    private int totalPages;
 
     public int getTotal()
     {
@@ -27,18 +23,18 @@ public class Pagination
         return count;
     }
 
-    public int getPer_page()
+    public int getPerPage()
     {
-        return per_page;
+        return perPage;
     }
 
-    public int getCurrent_page()
+    public int getCurrentPage()
     {
-        return current_page;
+        return currentPage;
     }
 
-    public int getTotal_pages()
+    public int getTotalPages()
     {
-        return total_pages;
+        return totalPages;
     }
 }
