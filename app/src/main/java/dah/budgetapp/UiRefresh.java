@@ -6,17 +6,17 @@ import android.os.Message;
 
 import java.util.ArrayList;
 
-import Factotum.ValueUpdate;
+import Factotum.AdapterUpdater;
 import dah.budgetapp.Dialogs.WaitDialog;
 
 public class UiRefresh
 {
     private Handler handler;
-    private ValueUpdate updater;
+    private AdapterUpdater updater;
     private ArrayList list;
     private WaitDialog dialog;
 
-    public UiRefresh(ValueUpdate updater, WaitDialog dialog)
+    public UiRefresh(AdapterUpdater updater, WaitDialog dialog)
     {
         this.updater = updater;
         this.dialog = dialog;
@@ -51,6 +51,6 @@ public class UiRefresh
 
     private void refreshList()
     {
-        updater.updateValue(this.list);
+        updater.refresh(this.list);
     }
 }
