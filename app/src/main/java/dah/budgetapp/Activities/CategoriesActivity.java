@@ -12,19 +12,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import Factotum.Category.CategoriesEventBus;
 import Factotum.Category.Category;
 import Factotum.Category.CategoryClient;
 import Factotum.Category.CategoryRepository;
-import Factotum.Data;
 import Factotum.ServiceGenerator;
 import dah.budgetapp.Categories.CategoriesAdapter;
 import dah.budgetapp.Dialogs.WaitDialog;
 import dah.budgetapp.R;
-import dah.budgetapp.UiRefresh;
+import rx.SingleSubscriber;
+import rx.Subscription;
 
 public class CategoriesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
@@ -32,7 +33,8 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     private CategoriesAdapter adapter;
     private WaitDialog waitDialog;
     private ArrayList<Category> categories;
-    private UiRefresh refresher;
+    private CategoriesEventBus eventBus;
+    private Subscription subscription;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -46,13 +48,12 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
         this.categories = new ArrayList<>();
 
         this.adapter = new CategoriesAdapter(this, categories);
-        this.refresher = new UiRefresh(adapter, this.waitDialog);
 
         list.setAdapter(this.adapter);
 
-        CategoryRepository repository = new CategoryRepository(ServiceGenerator.createService(CategoryClient.class));
+        this.eventBus = new CategoriesEventBus(new CategoryRepository(ServiceGenerator.createService(CategoryClient.class)));
 
-        this.categories = repository.findAll();
+        this.subscription = this.eventBus.findAll(this.listObserver());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -71,6 +72,10 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     @Override
     protected void onDestroy()
     {
+        if(this.subscription != null && !this.subscription.isUnsubscribed())
+        {
+            this.subscription.unsubscribe();
+        }
         super.onDestroy();
     }
 
@@ -109,14 +114,88 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    public ArrayList<Category> getCategories(List<Data> categories1)
+    private SingleSubscriber<ArrayList<Category>> listObserver()
     {
-        ArrayList<Category> categories = new ArrayList<>();
-        for (Data data : categories1)
+        return new SingleSubscriber<ArrayList<Category>>()
         {
-            categories.add((Category) data.getAttributes());
-        }
+            @Override
+            public void onSuccess(ArrayList<Category> value)
+            {
+                categories = value;
+                adapter.refresh(categories);
+                waitDialog.dismissDialog();
+            }
 
-        return categories;
+            @Override
+            public void onError(Throwable error)
+            {
+
+            }
+        };
+    }
+
+    private SingleSubscriber<Category> getByIdObserver()
+    {
+        return new SingleSubscriber<Category>()
+        {
+            @Override
+            public void onSuccess(Category value)
+            {
+
+            }
+
+            @Override
+            public void onError(Throwable error)
+            {
+
+            }
+        };
+    }
+
+    private SingleSubscriber<Category> createObserver()
+    {
+        return new SingleSubscriber<Category>()
+        {
+            @Override
+            public void onSuccess(Category value)
+            {
+                categories.add(value);
+                adapter.refresh(categories);
+                waitDialog.dismissDialog();
+            }
+
+            @Override
+            public void onError(Throwable error)
+            {
+
+            }
+        };
+    }
+
+    private SingleSubscriber<Boolean> deleteObserver()
+    {
+        return new SingleSubscriber<Boolean>()
+        {
+            @Override
+            public void onSuccess(Boolean value)
+            {
+                if(value)
+                {
+                    subscription = eventBus.findAll(listObserver());
+                }
+                else
+                {
+                    Toast.makeText(CategoriesActivity.this, "Category is not deleted", Toast.LENGTH_SHORT).show();
+                }
+
+                waitDialog.dismissDialog();
+            }
+
+            @Override
+            public void onError(Throwable error)
+            {
+
+            }
+        };
     }
 }
