@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import Factotum.Data;
 import Factotum.JsonResponse;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CategoryRepository
 {
@@ -54,27 +52,19 @@ public class CategoryRepository
         Call<JsonResponse<Data<Category>>> call = client.findAll();
         final ArrayList<Category> categories = new ArrayList<>();
 
-        call.enqueue(new Callback<JsonResponse<Data<Category>>>()
+        try
         {
-            @Override
-            public void onResponse(Call<JsonResponse<Data<Category>>> call, Response<JsonResponse<Data<Category>>> response)
+            ArrayList<Data<Category>> datas = call.execute().body().getData();
+
+            for (Data data : datas)
             {
-                if (response.isSuccessful())
-                {
-                    for (Data data : response.body().getData())
-                    {
-                        categories.add((Category) data.getAttributes());
-                    }
-                }
+                categories.add((Category) data.getAttributes());
             }
 
-            @Override
-            public void onFailure(Call<JsonResponse<Data<Category>>> call, Throwable t)
-            {
-                t.printStackTrace();
-            }
-
-        });
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
         return categories;
     }
