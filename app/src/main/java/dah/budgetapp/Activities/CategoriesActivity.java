@@ -24,7 +24,6 @@ import Factotum.ServiceGenerator;
 import dah.budgetapp.Categories.CategoriesAdapter;
 import dah.budgetapp.Dialogs.WaitDialog;
 import dah.budgetapp.R;
-import dah.budgetapp.UiRefresh;
 
 public class CategoriesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
@@ -32,7 +31,6 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     private CategoriesAdapter adapter;
     private WaitDialog waitDialog;
     private ArrayList<Category> categories;
-    private UiRefresh refresher;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -46,7 +44,6 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
         this.categories = new ArrayList<>();
 
         this.adapter = new CategoriesAdapter(this, categories);
-        this.refresher = new UiRefresh(adapter, this.waitDialog);
 
         list.setAdapter(this.adapter);
 
