@@ -1,4 +1,4 @@
-package dah.budgetapp.Types;
+package dah.budgetapp.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
@@ -12,37 +12,39 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import Factotum.Category.Category;
+import Factotum.AdapterUpdater;
 import dah.budgetapp.R;
 
-public class TypesAdapter extends BaseAdapter
+public class CategoriesAdapter extends BaseAdapter implements AdapterUpdater
 {
-    private ArrayList<Type> types;
+    private ArrayList<Category> categories;
     private LayoutInflater inflater;
     private Context context;
 
-    public TypesAdapter(Context context, ArrayList<Type> types)
+    public CategoriesAdapter(Context context, ArrayList<Category> categories)
     {
-        this.types = types;
         this.context = context;
+        this.categories = categories;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount()
     {
-        return this.types.size();
+        return categories.size();
     }
 
     @Override
     public Object getItem(int i)
     {
-        return this.types.get(i);
+        return categories.get(i);
     }
 
     @Override
     public long getItemId(int i)
     {
-        return 0;
+        return i;
     }
 
     @Override
@@ -52,12 +54,12 @@ public class TypesAdapter extends BaseAdapter
 
         if(view == null)
         {
-            view  = inflater.inflate(R.layout.holder_view_types, viewGroup, false);
+            view  = inflater.inflate(R.layout.holder_view_categories, viewGroup, false);
         }
 
-        Type type = (Type) this.getItem(i);
+        Category category = (Category) this.getItem(i);
 
-        ((TextView) view.findViewById(R.id.type_name)).setText(type.getName());
+        ((TextView) view.findViewById(R.id.view_category_name)).setText(category.getName());
 
         ImageButton menu = (ImageButton) view.findViewById(R.id.popup_menu);
 
@@ -77,10 +79,8 @@ public class TypesAdapter extends BaseAdapter
                         switch (item.getItemId())
                         {
                             case R.id.edit:
-
                                 break;
                             case R.id.delete:
-
                                 break;
                         }
                         return true;
@@ -89,5 +89,13 @@ public class TypesAdapter extends BaseAdapter
             }
         });
         return view;
+    }
+
+    @Override
+    public void refresh(ArrayList list)
+    {
+        this.categories.clear();
+        this.categories.addAll(list);
+        this.notifyDataSetChanged();
     }
 }

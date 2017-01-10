@@ -21,7 +21,7 @@ import Factotum.Category.Category;
 import Factotum.Category.CategoryClient;
 import Factotum.Category.CategoryRepository;
 import Factotum.ServiceGenerator;
-import dah.budgetapp.Categories.CategoriesAdapter;
+import dah.budgetapp.Adapters.CategoriesAdapter;
 import dah.budgetapp.Dialogs.WaitDialog;
 import dah.budgetapp.R;
 import rx.SingleSubscriber;

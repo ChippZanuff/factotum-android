@@ -12,9 +12,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import Factotum.Type.Type;
+import dah.budgetapp.Adapters.TypesAdapter;
 import dah.budgetapp.R;
-import dah.budgetapp.Types.Type;
-import dah.budgetapp.Types.TypesAdapter;
 
 public class TypesActivity extends AppCompatActivity
 {

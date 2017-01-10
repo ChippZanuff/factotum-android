@@ -1,4 +1,4 @@
-package dah.budgetapp.Categories;
+package dah.budgetapp.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
@@ -12,39 +12,38 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import Factotum.Category.Category;
-import Factotum.AdapterUpdater;
+import Factotum.Type.Type;
 import dah.budgetapp.R;
 
-public class CategoriesAdapter extends BaseAdapter implements AdapterUpdater
+public class TypesAdapter extends BaseAdapter
 {
-    private ArrayList<Category> categories;
+    private ArrayList<Type> types;
     private LayoutInflater inflater;
     private Context context;
 
-    public CategoriesAdapter(Context context, ArrayList<Category> categories)
+    public TypesAdapter(Context context, ArrayList<Type> types)
     {
+        this.types = types;
         this.context = context;
-        this.categories = categories;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount()
     {
-        return categories.size();
+        return this.types.size();
     }
 
     @Override
     public Object getItem(int i)
     {
-        return categories.get(i);
+        return this.types.get(i);
     }
 
     @Override
     public long getItemId(int i)
     {
-        return i;
+        return 0;
     }
 
     @Override
@@ -54,12 +53,12 @@ public class CategoriesAdapter extends BaseAdapter implements AdapterUpdater
 
         if(view == null)
         {
-            view  = inflater.inflate(R.layout.holder_view_categories, viewGroup, false);
+            view  = inflater.inflate(R.layout.holder_view_types, viewGroup, false);
         }
 
-        Category category = (Category) this.getItem(i);
+        Type type = (Type) this.getItem(i);
 
-        ((TextView) view.findViewById(R.id.view_category_name)).setText(category.getName());
+        ((TextView) view.findViewById(R.id.type_name)).setText(type.getName());
 
         ImageButton menu = (ImageButton) view.findViewById(R.id.popup_menu);
 
@@ -79,8 +78,10 @@ public class CategoriesAdapter extends BaseAdapter implements AdapterUpdater
                         switch (item.getItemId())
                         {
                             case R.id.edit:
+
                                 break;
                             case R.id.delete:
+
                                 break;
                         }
                         return true;
@@ -89,13 +90,5 @@ public class CategoriesAdapter extends BaseAdapter implements AdapterUpdater
             }
         });
         return view;
-    }
-
-    @Override
-    public void refresh(ArrayList list)
-    {
-        this.categories.clear();
-        this.categories.addAll(list);
-        this.notifyDataSetChanged();
     }
 }
