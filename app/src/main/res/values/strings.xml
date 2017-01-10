@@ -19,4 +19,7 @@
 
     <string name="spinner_category_tag">Select category here</string>
     <string name="spinner_type_tag">Select type here</string>
+
+    <string name="login">Login</string>
+    <string name="register">register</string>
 </resources>
