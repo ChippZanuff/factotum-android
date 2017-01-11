@@ -42,8 +42,26 @@ public class ServiceGenerator
         return retrofit.create(serviceClass);
     }
 
-    public static <S> S createService(Class<S> serviceClass) {
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+    public static <S> S authorizedService(Class<S> serviceClass, final String token) {
+        OkHttpClient.Builder authenticatedBuilder = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor()
+                {
+                    public Response intercept(Chain chain) throws IOException
+                    {
+                        final Request request = chain.request().newBuilder()
+                                .addHeader("Content-Type", "application/json")
+                                .addHeader("Accept", "application/json")
+                                .addHeader("Authorization", token)
+                                .build();
+
+                        return chain.proceed(request);
+                    }
+                });
+
+
+        Retrofit retrofit = builder
+                .client(authenticatedBuilder.build())
+                .build();
         return retrofit.create(serviceClass);
     }
 }

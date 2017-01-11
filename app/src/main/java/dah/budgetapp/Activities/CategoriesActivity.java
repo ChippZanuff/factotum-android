@@ -21,7 +21,9 @@ import Factotum.Category.Category;
 import Factotum.Category.CategoryClient;
 import Factotum.Category.CategoryRepository;
 import Factotum.ServiceGenerator;
+import Factotum.Token;
 import dah.budgetapp.Adapters.CategoriesAdapter;
+import dah.budgetapp.BudgetApp;
 import dah.budgetapp.Dialogs.WaitDialog;
 import dah.budgetapp.R;
 import rx.SingleSubscriber;
@@ -35,12 +37,16 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     private ArrayList<Category> categories;
     private CategoriesEventBus eventBus;
     private Subscription subscription;
+    private Token token;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+
+        BudgetApp application = (BudgetApp) getApplication();
+        this.token = application.getToken();
 
         this.list = (ListView) findViewById(R.id.list_categories);
 
@@ -51,7 +57,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
 
         list.setAdapter(this.adapter);
 
-        this.eventBus = new CategoriesEventBus(new CategoryRepository(ServiceGenerator.createService(CategoryClient.class)));
+        this.eventBus = new CategoriesEventBus(new CategoryRepository(ServiceGenerator.authorizedService(CategoryClient.class, this.getTokenString())));
 
         this.subscription = this.eventBus.findAll(this.listObserver());
 
@@ -112,6 +118,11 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     public void viewsFinder()
     {
 
+    }
+
+    private String getTokenString()
+    {
+        return this.token.getToken_type() + " " + this.token.getAccess_token();
     }
 
     private SingleSubscriber<ArrayList<Category>> listObserver()
