@@ -6,11 +6,7 @@ public class Type extends Attributes
 {
     private String name;
     private String categoryId;
-
-    public Type(String name)
-    {
-        this.name = name;
-    }
+    private String id;
 
     public Type()
     {
@@ -43,5 +39,15 @@ public class Type extends Attributes
     public void setCategoryIdId(String categoryId)
     {
         this.categoryId = categoryId;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
     }
 }

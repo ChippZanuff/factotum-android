@@ -12,7 +12,7 @@ import java.util.List;
 
 import Factotum.Category.Category;
 import dah.budgetapp.R;
-import dah.budgetapp.StatisticsAdapter;
+import dah.budgetapp.Adapters.StatisticsAdapter;
 
 public class StatisticsActivity extends AppCompatActivity
 {

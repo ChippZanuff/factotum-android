@@ -12,10 +12,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import Factotum.AdapterUpdater;
 import Factotum.Type.Type;
 import dah.budgetapp.R;
 
-public class TypesAdapter extends BaseAdapter
+public class TypesAdapter extends BaseAdapter implements AdapterUpdater
 {
     private ArrayList<Type> types;
     private LayoutInflater inflater;
@@ -90,5 +91,13 @@ public class TypesAdapter extends BaseAdapter
             }
         });
         return view;
+    }
+
+    @Override
+    public void refresh(ArrayList list)
+    {
+        this.types.clear();
+        this.types.addAll(list);
+        this.notifyDataSetChanged();
     }
 }

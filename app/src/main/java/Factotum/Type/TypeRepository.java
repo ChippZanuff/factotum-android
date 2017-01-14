@@ -56,12 +56,10 @@ public class TypeRepository
         {
             ArrayList<Data<Type>> datas = call.execute().body().getData();
 
-            for (Data data : datas)
+            for (int i = 0; i < datas.size(); i++)
             {
-                types.add(new Type(
-                        ((Type) data.getAttributes()).getName()
-                    )
-                );
+                types.add(datas.get(i).getAttributes());
+                types.get(i).setId(datas.get(i).getId());
             }
 
         } catch (IOException e)

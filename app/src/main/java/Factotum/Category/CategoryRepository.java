@@ -56,9 +56,10 @@ public class CategoryRepository
         {
             ArrayList<Data<Category>> datas = call.execute().body().getData();
 
-            for (Data data : datas)
+            for (int i = 0; i < datas.size(); i++)
             {
-                categories.add((Category) data.getAttributes());
+                categories.add(datas.get(i).getAttributes());
+                categories.get(i).setId(datas.get(i).getId());
             }
 
         } catch (IOException e)

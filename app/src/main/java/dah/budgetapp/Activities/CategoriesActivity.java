@@ -112,6 +112,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
     {
         Intent intent = new Intent(this, TypesActivity.class);
+        intent.putExtra("Id", categories.get(i).getId());
         startActivity(intent);
     }
 
@@ -170,7 +171,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
             @Override
             public void onSuccess(Category value)
             {
-                categories.add(value);
+                categories.add(0, value);
                 adapter.refresh(categories);
                 waitDialog.dismissDialog();
             }

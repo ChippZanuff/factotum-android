@@ -1,4 +1,4 @@
-package dah.budgetapp;
+package dah.budgetapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import Factotum.Category.Category;
+import dah.budgetapp.R;
 
 public class StatisticsAdapter extends BaseAdapter
 {

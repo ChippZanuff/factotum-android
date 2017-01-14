@@ -5,6 +5,7 @@ import Factotum.Attributes;
 public class Category extends Attributes
 {
     private String name;
+    private String id;
 
     public String getName()
     {
@@ -22,5 +23,15 @@ public class Category extends Attributes
     public String toString()
     {
         return this.name;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
     }
 }

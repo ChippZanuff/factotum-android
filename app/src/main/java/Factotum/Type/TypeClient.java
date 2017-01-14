@@ -12,13 +12,13 @@ import retrofit2.http.Path;
 
 public interface TypeClient
 {
-    @GET("api/v1/categories/{id}/types")
+    @GET("api/v1/categories/{categoryId}/types")
     Call<JsonResponse<Data<Type>>> findAll(@Path("categoryId") String categoryId);
 
-    @GET("api/v1/categories/{categoryId}/types/{id}")
+    @GET("api/v1/categories/{categoryId}/types/{typeId}")
     Call<Data<Type>> find(@Path("categoryId") String categoryId, @Path("typeId") String typeId);
 
-    @DELETE("api/v1/categories/{categoryId}/types/{id}")
+    @DELETE("api/v1/categories/{categoryId}/types/{typeId}")
     Call<JsonResponse<Data<Type>>> delete(@Path("categoryId") String categoryId, @Path("typeId") String typeId);
 
     @POST("api/v1/categories/{categoryId}/types")
