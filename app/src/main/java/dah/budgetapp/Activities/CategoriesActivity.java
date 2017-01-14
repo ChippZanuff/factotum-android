@@ -63,6 +63,7 @@ public class CategoriesActivity extends AppCompatActivity implements AdapterView
         if (bar != null)
         {
             bar.setDisplayHomeAsUpEnabled(true);
+            bar.setHomeButtonEnabled(true);
             bar.setTitle(R.string.title_categories);
         }
 

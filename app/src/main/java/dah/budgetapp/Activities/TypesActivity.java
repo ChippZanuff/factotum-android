@@ -36,6 +36,7 @@ public class TypesActivity extends AppCompatActivity
         if (bar != null)
         {
             bar.setDisplayHomeAsUpEnabled(true);
+            bar.setHomeButtonEnabled(true);
             bar.setTitle(R.string.title_types);
         }
 

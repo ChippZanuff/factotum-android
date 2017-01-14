@@ -19,13 +19,33 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activities.CategoriesActivity"/>
+        <activity android:name=".Activities.CategoriesActivity"
+            android:parentActivityName=".Activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
 
-        <activity android:name=".Activities.StatisticsActivity"/>
+        <activity android:name=".Activities.StatisticsActivity"
+                  android:parentActivityName=".Activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
 
-        <activity android:name=".Activities.CreateExpensesActivity"/>
+        <activity android:name=".Activities.CreateExpensesActivity"
+                  android:parentActivityName=".Activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
 
-        <activity android:name=".Activities.TypesActivity"/>
+        <activity android:name=".Activities.TypesActivity"
+                  android:parentActivityName=".Activities.CategoriesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.CategoriesActivity" />
+        </activity>
 
     </application>
 

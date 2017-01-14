@@ -36,6 +36,7 @@ public class StatisticsActivity extends AppCompatActivity
         if(this.bar != null)
         {
             this.bar.setDisplayHomeAsUpEnabled(true);
+            bar.setHomeButtonEnabled(true);
             this.bar.setTitle(R.string.title_statistics);
         }
 
